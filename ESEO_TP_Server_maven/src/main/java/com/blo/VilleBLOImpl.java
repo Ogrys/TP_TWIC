@@ -17,9 +17,9 @@ public class VilleBLOImpl implements VilleBLO {
 	public ArrayList<Ville> getInfoVille(String codePostal) throws SQLException {
 		ArrayList<Ville> ville = null;
 		if (codePostal != null) {
-			ville = villeDAO.getInfoVilles(codePostal);
+			ville = villeDAO.getInfoVillesCodePostal(codePostal);
 		} else {
-			ville = villeDAO.getInfoVille();
+			ville = villeDAO.getInfoVilles();
 		}
 		return ville;
 	}

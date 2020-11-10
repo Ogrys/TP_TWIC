@@ -13,17 +13,17 @@ import com.dto.Ville;
 
 @Repository
 public class VilleDAOImpl implements VilleDAO {
-	
-	public ArrayList<Ville> getInfoVille() throws SQLException {
-		String requeteSelect = "SELECT * FROM ville_france";
+
+	public ArrayList<Ville> getInfoVillesCodePostal(String codePostal) throws SQLException {
+		String requeteSelect = "SELECT * FROM ville_france WHERE code_postal = " + codePostal;
 		Connection connection = JDBCConfiguration.getConnexionBDD();
 		Statement stmt = connection.createStatement();
 		ResultSet rs = stmt.executeQuery(requeteSelect);
 		return parseReponse(rs, connection);
 	}
-
-	public ArrayList<Ville> getInfoVilles(String param) throws SQLException {
-		String requeteSelect = "SELECT * FROM ville_france WHERE code_postal = " + param;
+	
+	public ArrayList<Ville> getInfoVilles() throws SQLException {
+		String requeteSelect = "SELECT * FROM ville_france";
 		Connection connection = JDBCConfiguration.getConnexionBDD();
 		Statement stmt = connection.createStatement();
 		ResultSet rs = stmt.executeQuery(requeteSelect);
