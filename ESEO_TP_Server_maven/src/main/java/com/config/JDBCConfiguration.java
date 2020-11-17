@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class JDBCConfiguration {
 	@Bean
 	public static Connection getConnexionBDD() {
-		String url = "jdbc:mysql://localhost:3307/twic?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3307/twic?serverTimezone=UTC";
 		String user = "root";
 		String passwd = "";
 		Connection connection = null;
