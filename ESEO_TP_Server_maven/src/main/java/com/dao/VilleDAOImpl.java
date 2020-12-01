@@ -30,7 +30,7 @@ public class VilleDAOImpl implements VilleDAO {
 		Statement stmt = connection.createStatement();
 		ResultSet rs = stmt.executeQuery(requeteSelect);
 		ArrayList<Ville> villes = parseReponse(rs, connection);
-		connection.close();
+		stmt.close();
 		return villes;
 	}
 	
