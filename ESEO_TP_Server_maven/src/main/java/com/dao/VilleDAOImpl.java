@@ -33,7 +33,7 @@ public class VilleDAOImpl implements VilleDAO {
 			ResultSet rs = stmt.executeQuery(requeteSelect);
 			return parseReponse(rs, connection);
 		}finally {
-			return null;
+			connection.close();
 		}
 	}
 	
