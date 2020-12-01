@@ -26,11 +26,18 @@ public class VilleDAOImpl implements VilleDAO {
 	//methode qui liste les villes sur le nom de la commune
 	public ArrayList<Ville> getInfoVillesNomCommune(String nomCommune) throws SQLException {
 		String requeteSelect = "SELECT * FROM ville_france WHERE code_postal = " + nomCommune;
-		Connection connection = JDBCConfiguration.getConnexionBDD();
-		Statement stmt = connection.createStatement();
-		ResultSet rs = stmt.executeQuery(requeteSelect);
-		ArrayList<Ville> villes = parseReponse(rs, connection);
-		stmt.close();
+		Connection connection = null;
+		ArrayList<Ville> villes = null;
+		try {
+			connection = JDBCConfiguration.getConnexionBDD();
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(requeteSelect);
+			villes = parseReponse(rs, connection);
+		}catch (Exception e){
+			System.out.println(e);
+		}finally {
+			connection.close();
+		}
 		return villes;
 	}
 	
